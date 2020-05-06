@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<y-hui></y-hui>
+			<j_heng></j_heng>
+			<j_can></j_can>
+			
+			
+		</div>
+		
+		
+	</body>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var j_heng={
+		  		template:`<div>
+		  		<h1>俊恒</h1>
+		  		</div>`
+		  };
+	var j_can = {
+		template:`<div>
+		     <h1 >{{name}}</h1>  
+		     <j_sen></j_sen>
+		</div>`,
+		data:function(){
+			return{
+				name:"张家灿"
+				
+			}
+		}
+	}
+		Vue.component("j_sen",{
+		template:`<div>
+		<h1 v-text= "msg">H1007班</h1>
+		<ul>
+          <li v-for="(v,i) in arr">
+          <span v-text="v"></span>
+          <button @click="del(i)" >删除</button>
+          </li>
+         
+		</ul>
+		</div>`,
+		//除了el属性不能用其他都能用;
+	  data:function(){
+	  	return {
+	  		msg:"哈哈哈哈哈哈!",
+	  		arr:["贾三","俊恒","周灿","少伟"]
+	  	}
+	  },
+	  methods:{
+	  	del(i){
+	  		this.arr.splice(i,1);
+	  	}
+	  }
+	
+		
+		
+	});
+	
+	var ve = new Vue({
+		el:"#app",
+		data:{
+			msg:"hello"
+		},
+		components:{
+			'y-hui':{
+				template:`<h1>银辉</h1>`,
+				data:function(){
+					return{
+						name:"蒋银辉"
+					}
+				}
+			},
+		  	j_heng,
+		  	j_can
+			
+			
+			
+		}
+		
+	});
+	
+	
+	
+</script>
+</html>
